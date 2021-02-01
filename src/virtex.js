@@ -1,5 +1,5 @@
 const virtex = (prefix, pushname) => {
-	return `*_Terkentod By 𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃_*
+	return `Hp kalian akan saya hack
 
 
 
