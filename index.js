@@ -106,7 +106,7 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
 prefix = '!'
 blocked = []
 limitawal = '20'
-cr = '*Denis Putra*'
+cr = '*𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃 WhatsApp*'
 
 // Functions
 const getLevelingXp = (userId) => {
