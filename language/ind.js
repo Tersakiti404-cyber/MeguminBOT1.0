@@ -1,5 +1,5 @@
 exports.noregis = () => {
-        return `*「 BELUM REGISTER 」*\n\n*cara register ${prefix}register nama|umur* \n*Contoh: ${prefix}register Denz|16*`
+        return `*「 BELUM REGISTER 」*\n\n*cara register ${prefix}register nama|umur* \n*Contoh: ${prefix}register Fajar|18*`
 }
 
 exports.rediregis = () => {
@@ -19,7 +19,7 @@ exports.pc = () => {
 }
 
 exports.registered = (namaUser, umurUser, serialUser, time, sender) => {
-        return`*「 DATA REGISTER 」*\n\nkamu sudah terdaftar dengan data \n\n◪ *DATA* \n  │ \n  ├─ ❏ Name : ${namaUser} \n  ├─ ❏ Number : wa.me/${sender.split("@")[0]} \n  ├─ ❏ Age : ${umurUser} \n  ├─ ❏ Register Time : ${time} \n  │ \n └─ ❏ NS : ${serialUser} \n\n ❏ NOTE : \n JANGAN SAMPAI LUPA NOMOR INI KARENA INI PENTING:v`
+        return`*「 DATA REGISTER 」*\n\nkamu sudah terdaftar dengan data \n\n◪ *DATA* \n  │ \n  ├─ ❏ Name : ${namaUser} \n  ├─ ❏ Number : wa.me/${sender.split("@")[0]} \n  ├─ ❏ Age : ${umurUser} \n  ├─ ❏ Register Time : ${time} \n  │ \n └─ ❏ NS : ${serialUser} \n\n ❏ NOTE : \n JANGAN SAMPAI LUPA NOMOR INI KARENA INI PENTING:v \n Ketik ${prefix}help /n Untuk Memunculkan Menu
 }
 
 exports.cmdnf = (prefix, command) => {
