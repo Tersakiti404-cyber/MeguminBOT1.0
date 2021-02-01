@@ -1,6 +1,6 @@
 /*
 * Tambahin nama author lah
-* Author nya Radya, Farid, M.hadi.firmansya, and 𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃
+* Author nya Radya, Farid, M.hadi.firmansya, and Denz
 * Tambahin ya zhayank
 * Jan numpang nama doank
 * Baca readme nya biar gk tanya tanya
@@ -64,11 +64,11 @@ const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
 const uang = JSON.parse(fs.readFileSync('./database/json/uang.json'))
 const _registered = JSON.parse(fs.readFileSync('./database/json/registered.json'))
 
-/*let {
+let {
     botName,
     ownerName,
     BarBarKey,
-} = ('./settings/setting')*/
+} = ('./settings/setting')
 
 // Load Menu File
 const { help } = require('./database/menu/help')
@@ -93,20 +93,20 @@ const { stayonscreen } = require('./database/menu/stayonscreen')
 const { stickermaker } = require('./database/menu/stickermaker')
 const { tod } = require('./database/menu/tod')
 const { wibu } = require('./database/menu/wibu')
-/*const { xp } = require('./database/menu/xp')
-const { limit } = require('./database/menu/limit*/
+const { xp } = require('./database/menu/xp')
+const { limit } = require('./database/menu/limit')
 
 // Load Vcard Contact
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FN:Fajar Alfarizi\n' // full name
-            + 'ORG:Owner Bot;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=6281333782061:+62 813-3378-2061\n' // WhatsApp ID + phone number
+            + 'FN:デ ニ ス\n' // full name
+            + 'ORG:Owner Dns Bot\n' // the organization of the contact
+            + 'TEL;type=CELL;type=VOICE;waid=6285866295942:+62 858-6629-5942\n' // WhatsApp ID + phone number
             + 'END:VCARD'
-prefix = '.'
+prefix = '!'
 blocked = []
 limitawal = '20'
-cr = '*𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃 WhatsApp*'
+cr = '*Denis Putra*'
 
 // Functions
 const getLevelingXp = (userId) => {
@@ -302,7 +302,7 @@ async function starts() {
 		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
 	})
 
-	fs.existsSync('./Nazwa.json') && client.loadAuthInfo('./Nazwa.json')
+	fs.existsSync('./Denz.json') && client.loadAuthInfo('./Denz.json')
 	client.on('connecting', () => {
 		start('2', 'Connecting...')
 	})
@@ -310,7 +310,7 @@ async function starts() {
 		success('2', 'Connected')
 	})
 	await client.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./Nazwa.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
+        fs.writeFileSync('./Denz.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
 
 	client.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
@@ -392,14 +392,14 @@ async function starts() {
 					ownerB: '[❗] Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
 					admin: '[❗] Perintah ini hanya bisa di gunakan oleh admin group! ❌',
 					Badmin: '[❗] Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌',
-                                        daftarB: `──「 BELUM REGISTER 」──\nHalo kak !\nKamu belum Register nih, register dulu yuk... \n\nCommand : ${prefix}register nama|umur\nContoh : ${prefix}register 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|16`,
+                                        daftarB: `──「 BELUM REGISTER 」──\nHalo kak !\nKamu belum Register nih, register dulu yuk... \n\nCommand : ${prefix}register nama|umur\nContoh : ${prefix}register Denz|16`,
 				}
 			}
     			const apakah = ['Ya','Tidak']
         		const bisakah = ['Bisa','Tidak Bisa']
 		        const kapankah = ['Hari Lagi','Minggu Lagi','Bulan Lagi','Tahun Lagi']
 			const botNumber = client.user.jid
-			const ownerNumber = ["6281333782061@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["6285866295942@s.whatsapp.net"] // replace this with your number
 			const nomorOwner = [ownerNumber]
 			const isGroup = from.endsWith('@g.us')
 			const totalchat = await client.chats.all()
@@ -416,14 +416,14 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
                         const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
-                        const NomerOwner = '12542123926@s.whatsapp.net'
+                        const NomerOwner = '6285866295942@s.whatsapp.net'
                         const isEventon = isGroup ? event.includes(from) : false
                         const isRegister = checkRegisteredUser(sender)
                         pushname = client.contacts[sender] != undefined ? client.contacts[sender].vname || client.contacts[sender].notify : undefined
 
                         // Options
-                        const botName = '𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃'
-                        const ownerName = 'Fajar Alfarizi'
+                        const botName = 'Dns Bot'
+                        const ownerName = '  '
                         const BarBarKey = 'YOUR_APIKEY'
 
 			const isUrl = (url) => {
@@ -536,6 +536,7 @@ async function starts() {
                      // Load Commands
 			switch(command) {
                                 case 'help':
+                                case 'menu':
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 			                const uangku = checkATMuser(sender)
@@ -753,23 +754,25 @@ async function starts() {
                client.sendMessage(from, 'Nih nomor ownerku kak, save ya kak nanti di save balik',MessageType.text, { quoted: mek} )
                 break
 	case 'hidetag':
-                client.updatePresence(from, Presence.composing) 
-                if (!isRegister) return reply(mess.only.daftarB)
-                if (!isGroup) return reply(mess.only.group)
-                teks = body.slice(9)
-                group = await client.groupMetadata(from);
-                member = group['participants']
-                jids = [];
-                member.map( async adm => {
-                jids.push(adm.id.replace('c.us', 's.whatsapp.net'));
-                 })
-                 options = {
-                 text: teks,
-                contextInfo: {mentionedJid: jids},
-                quoted: mek
-                }
-              await client.sendMessage(from, options, text)
-               break
+                if (!isRegistered) return reply(ind.noregis())
+                if (isLimit(sender)) return reply(ind.limitend(pusname))
+					if (!isGroup) return reply(ind.groupo())
+					if (!isGroupAdmins) return reply(ind.admin())
+					var value = body.slice(9)
+					var group = await client.groupMetadata(from)
+					var member = group['participants']
+					var mem = []
+					member.map( async adm => {
+					mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+					})
+					var options = {
+					text: value,
+					contextInfo: { mentionedJid: mem },
+					quoted: mek
+					}
+					client.sendMessage(from, options, text)
+					await limitAdd(sender)
+					break
                                 case 'tiktokstalk':
 					try {
 						if (args.length < 1) return client.sendMessage(from, 'Usernamenya mana kak? ', text, {quoted: mek})
@@ -801,7 +804,7 @@ async function starts() {
 					break
 				case 'marvellogo':
 					var gh = body.slice(12)
-					if (args.length < 1) return reply(`Kirim perintah ${prefix}marvellogo teks, contoh ${prefix}marvellogo 𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃`)
+					if (args.length < 1) return reply(`Kirim perintah ${prefix}marvellogo teks, contoh ${prefix}marvellogo Denz Canss`)
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					reply(mess.wait)
@@ -868,32 +871,51 @@ async function starts() {
                                         await limitAdd(sender)
 					break				
 				case 'ytmp3':
-					if (args.length < 1) return reply('Urlnya mana um?')
-                                        if (!isRegister) return reply(mess.only.daftarB)
-                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://mhankbarbar.tech/api/yta?url=${args[0]}&apiKey=${BarBarKey}`, {method: 'get'})
+                    if (args.length < 1) return reply('Urlnya mana um?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.wrogf())
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `❏ *Title* : ${anu.title}\n❏ *Filesize* : ${anu.filesize}\n\nTunggu Bentar Ya Kak, Audionya Lagi Di Kirim...`
+					teks = `*Title* : ${anu.title}\n*Size* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
-                                        await limitAdd(sender)
+					await limitAdd(sender)
 					break
+					case 'moddroid':
+				data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=BotWeA`)
+			hepi = data.result[0] 
+			teks = `*Nama*: ${data.result[0].title}\n*publisher*: ${hepi.publisher}\n*mod info:* ${hepi.mod_info}\n*size*: ${hepi.size}\n*latest version*: ${hepi.latest_version}\n*genre*: ${hepi.genre}\n*link:* ${hepi.link}\n*download*: ${hepi.download}`
+			buffer = await getBuffer(hepi.image)
+			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
+			await limitAdd(sender)
+			break
+			case 'happymod':
+				data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=BotWeA`)
+			hupo = data.result[0] 
+			teks = `*Nama*: ${data.result[0].title}\n*version*: ${hupo.version}\n*size:* ${hupo.size}\n*root*: ${hupo.root}\n*purchase*: ${hupo.price}\n*link*: ${hupo.link}\n*download*: ${hupo.download}`
+			buffer = await getBuffer(hupo.image)
+			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
+			await limitAdd(sender)
+			break
+            case 'bitly':
+				client.updatePresence(from, Presence.composing) 
+                data = await fetchJson(`https://tobz-api.herokuapp.com/api/bitly?url=${args[0]}&apikey=BotWeA`)
+                hasil = `link : ${args[0]}\n\nOutput : ${data.result}`
+                reply(hasil)
+                await limitAdd(sender)
+                break
 				case 'ytmp4':
-					if (args.length < 1) return reply('Urlnya mana um?')
-                                        if (!isRegister) return reply(mess.only.daftarB)
-                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
+				if (args.length < 1) return reply('Urlnya mana um?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(ind.stikga())
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp4?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*❏ Title* : ${anu.title}\n\n*VIDEO SEDANG DIKIRIMKAN, JANGAN SPAM YA SAYANG*`
+					teks = `*Title* : ${anu.title}\n*Size* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
-                                        await limitAdd(sender)
+					await limitAdd(sender)
 					break
 				case 'trendtwit':
 					client.updatePresence(from, Presence.composing) 
@@ -918,7 +940,7 @@ async function starts() {
 					client.sendMessage(from, '10 Detik lagi', text) // ur cods
 					}, 0) // 1000 = 1s,
 					break
-				/*case 'semoji':
+				case 'semoji':
 					if (args.length < 1) return reply('emojinya mana um?')
                                         if (!isRegister) return reply(mess.only.daftarB)
 					ranp = getRandom('.png')
@@ -933,7 +955,7 @@ async function starts() {
 						client.sendMessage(from, buffer, sticker)
 						fs.unlinkSync(rano)
 					})
-					break*/
+					break
 				case 'nulis':
 				case 'tulis':
 					if (args.length < 1) return reply('Yang mau di tulis apaan?')
@@ -1035,8 +1057,8 @@ async function starts() {
 					ranm = getRandom('.mp3')
 					rano = getRandom('.ogg')
 					dtt.length > 600
-					? reply('Textnya kebanyakan om')
-					: gtts.save(ranm, dtt, function() {
+					reply('Textnya kebanyakan om')
+					 gtts.save(ranm, dtt, function() {
 						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
 							fs.unlinkSync(ranm)
 							buff = fs.readFileSync(rano)
@@ -1299,14 +1321,11 @@ async function starts() {
                                         await limitAdd(sender)
 					break
 				case 'lirik':
-					if (args.length < 1) return reply('Nama lagunya apa kak?')
-                                        if (!isRegister) return reply(mess.only.daftarB)
-                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
-					tels = body.slice(7)
-					anu = await fetchJson(`https://arugaz.my.id/api/lirik?judul=${tels}`, {method: 'get'})
-					reply(anu.result)
-                                        await limitAdd(sender)
-					break
+				anu = await fetchJson(`https://tobz-api.herokuapp.com/api/lirik?q=akad&apikey=BotWeA`)
+				thum = await getBuffer(anu.result.thumb)
+				teks = `*「 LAGU DI TEMUKAN 」*\n\n*Judul* : ${anu.result.judul}\n*Album* : ${anu.result.album}\n*public in* : ${anu.result.dipublikasi}\n*Lyrics* : ${anu.result.lirik}`
+				client.sendMessage(from, thum, image, { quoted : mek, caption: teks })
+				break
 			case 'igstalk':
                       if (!isRegister) return reply(mess.only.daftarB)
                       if (isLimit(sender)) return reply(ind.limitend(pusname))
@@ -1504,6 +1523,13 @@ async function starts() {
 				case 'stiker':
 				case 'sticker':
 				case 'stickergif':
+				case 's':
+				case 'sgif':
+				case 'gifstiker':
+				case 'gifsticker':
+				case 'asw':
+				case 'kntd':
+				case 'ngntd':
 				case 'stikergif':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -1775,7 +1801,7 @@ async function starts() {
 					var gh = body.slice(11)
 					var teks1 = gh.split("|")[0];
 					var teks2 = gh.split("|")[1];
-					if (args.length < 1) return reply(`teksnya mana? contoh ${prefix}logowolf 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃`)
+					if (args.length < 1) return reply(`teksnya mana? contoh ${prefix}logowolf Denz|Canss`)
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					reply(mess.wait)
@@ -1853,7 +1879,7 @@ async function starts() {
 					var gh = body.slice(11)
 					var teks1 = gh.split("|")[0];
 					var teks2 = gh.split("|")[1];
-					if (args.length < 1) return reply(`teksnya mana? contoh ${prefix}logowolf 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃`)
+					if (args.length < 1) return reply(`teksnya mana? contoh ${prefix}logowolf Denz|Canss`)
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					reply(mess.wait)
@@ -1873,7 +1899,7 @@ async function starts() {
 					var gh = body.slice(7)
 					var gbl1 = gh.split("|")[0];
 					var gbl2 = gh.split("|")[1];
-					if (args.length < 1) return reply('Teksnya mana um\nContoh: ${prefix}phlogo |𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃')
+					if (args.length < 1) return reply('Teksnya mana um\nContoh: ${prefix}phlogo |Denz|Canss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
 					reply(mess.wait)
@@ -1968,7 +1994,7 @@ async function starts() {
                                 case 'neonlogo':
                                         var gh = body.slice(9)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}neonlogo 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}neonlogo DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -1980,7 +2006,7 @@ async function starts() {
                                 case 'neonlogo2':
                                         var gh = body.slice(10)
                                         teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}neonlogo2 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}neonlogo2 DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -1993,7 +2019,7 @@ async function starts() {
                                         var gh = body.slice(9)
                                         var teks1 = gh.split("|")[0];
                                         var teks2 = gh.split("|")[1];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}lionlogo 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}lionlogo Denz|Canss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2013,7 +2039,7 @@ async function starts() {
                                 case 'jokerlogo':
                                         var gh = body.slice(10)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}jokerlogo 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}jokerlogo DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2022,12 +2048,12 @@ async function starts() {
                                         client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Nih kak logonya...'})
                                         await limitAdd(sender)
                                         break
-                                /*case 'jadwaltvnow':  
+                                case 'jadwaltvnow':  
 				if (!isRegister) return reply(mess.only.daftarB)
                                reply(mess.wait)
 		               anu = await fetchJson(`http://api-melodicxt.herokuapp.com/api/jadwaltvnow?&apiKey=administrator`, {method: 'get'})
 			       reply(anu.result.jadwalTV)
-					break*/
+					break
                                 case 'afk':
                                         tels = body.slice(4)
                                         if (args.length < 1) return reply('kakak afk karena apa?')
@@ -2042,7 +2068,7 @@ async function starts() {
                                 case 'shadow':
                                         var gh = body.slice(7)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}shadow 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}shadow DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2054,7 +2080,7 @@ async function starts() {
                                 case 'burnpaper':
                                         var gh = body.slice(10)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}burnpaper 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}burnpaper DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2066,7 +2092,7 @@ async function starts() {
                                 case 'coffee':
                                         var gh = body.slice(7)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}coffee 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}coffee DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2078,7 +2104,7 @@ async function starts() {
                                 case 'lovepaper':
                                         var gh = body.slice(10)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}lovepaper 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}lovepaper DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2090,7 +2116,7 @@ async function starts() {
                                 case 'woodblock':
                                         var gh = body.slice(10)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}woodblock 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}woodblock DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2102,7 +2128,7 @@ async function starts() {
                                 case 'qowheart':
                                         var gh = body.slice(9)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}qowheart 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}qowheart DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2114,7 +2140,7 @@ async function starts() {
                                 case 'mutgrass':
                                         var gh = body.slice(9)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}mutgrass 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}mutgrass DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2126,7 +2152,7 @@ async function starts() {
                                 case 'undergocean':
                                         var gh = body.slice(12)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}undergocean 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}undergocean DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2138,7 +2164,7 @@ async function starts() {
                                 case 'woodenboards':
                                         var gh = body.slice(13)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}woodenboards 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}woodenboards DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2150,7 +2176,7 @@ async function starts() {
                                 case 'wolfmetal':
                                         var gh = body.slice(10)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}wolfmetal 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}wolfmetal DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2162,7 +2188,7 @@ async function starts() {
                                 case 'metalictglow':
                                         var gh = body.slice(14)
                                         var teks1 = gh.split("|")[0];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}metalictglow 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}metalictglow DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2175,7 +2201,7 @@ async function starts() {
                                         var gh = body.slice(5)
                                         var teks1 = gh.split("|")[0];
                                         var teks2 = gh.split("|")[1];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}8bit 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}8bit Denz|Canss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         reply(mess.wait)
@@ -2216,22 +2242,10 @@ async function starts() {
                                         await limitAdd(sender)
 					break
 				case 'ttp':
-					if (args.length < 1) return reply('Textnya mana um?')
-                                        if (!isRegister) return reply(mess.only.daftarB)
-                                        if (isLimit(sender)) return reply(ind.limitend(pusname))
-					ranp = getRandom('.png')
-					rano = getRandom('.webp')
-					teks = body.slice(4).trim()
-					anu = await fetchJson(`https://mhankbarbar.tech/api/text2image?text=${teks}&apiKey=${BarBarKey}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						client.sendMessage(from, fs.readFileSync(rano), sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
-                                        await limitAdd(sender)
-					break
+				anu = await fetchJson(`https://tobz-api.herokuapp.com/api/ttp?text=${body.slice(5)}&apikey=BotWeA`)
+				res = await getBase64(anu.base64)
+				client.sendMessage(from, res, sticker, {quoted:mek})
+				break
                                 case 'clearall':
 					if (!isOwner) return reply('Kamu siapa?')
 					anu = await client.chats.all()
@@ -2241,13 +2255,13 @@ async function starts() {
 					}
 					reply('Sukses delete all chat :)')
 					break
-				case 'simi':
+				/*case 'simi':
 					if (args.length < 1) return reply('Textnya mana um?')
 					teks = body.slice(5)
-					anu = await simih(teks) //fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
-					//if (anu.error) return reply('Simi ga tau kak')
+					anu = await simih(teks) fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
+					if (anu.error) return reply('Simi ga tau kak')
 					reply(anu)
-					break
+					break*/
 				case 'simih':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -2285,7 +2299,7 @@ async function starts() {
                                         var gh = body.slice(9)
                                         var teks1 = gh.split("|")[0];
                                         var teks2 = gh.split("|")[1];
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}pubglogo 𝙼𝚎𝚐𝚞𝚖𝚒𝚗|𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}pubglogo Denz|Canss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         anu = await fetchJson(`https://tobz-api.herokuapp.com/api/photooxy?theme=pubg&text1=${teks1}&text2=${teks2}&apikey=BotWeA`, {method: 'get'})
@@ -2296,7 +2310,7 @@ async function starts() {
                                 case 'herrypotter':
                                 case 'harrypotter':
                                         var gh = body.slice(12)
-                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}harrypotter 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃')
+                                        if (args.length < 1) return reply('teksnya mana um\nContoh: ${prefix}harrypotter DenzCanss')
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         anu = await fetchJson(`https://tobz-api.herokuapp.com/api/photooxy?theme=harry_potter&text=${gh}&apikey=BotWeA`, {method: 'get'})
@@ -2320,7 +2334,7 @@ async function starts() {
                                         break
                                 case 'fancytext':
                                         var teks1 = body.slice(10)
-                                        if (args.length < 1) return reply(`teksnya mana um...\nContoh:\n${prefix}fancytext 𝙼𝚎𝚐𝚞𝚖𝚒𝚗𝙱𝙾𝚃`)
+                                        if (args.length < 1) return reply(`teksnya mana um...\nContoh:\n${prefix}fancytext DenzCanss`)
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pusname))
                                         anu = await fetchJson(`https://arugaz.my.id/api/random/text/fancytext?text=${teks1}`, {method: 'get'})
@@ -2367,7 +2381,8 @@ async function starts() {
                                         }
                                         break
                                 case 'register':
-                                        if (isRegister) return  reply(mess.only.daftarB)
+                                case 'daftar':
+                                        if (isRegister) return  reply(`「 SUDAH REGISTER 」 \n\nKakak dah register kak...`)
                                         if (!q.includes('|')) return  reply(ind.wrongf())
                                         const namaUser = q.substring(0, q.indexOf('|') - 0)
                                         const umurUser = q.substring(q.lastIndexOf('|') + 1)
@@ -2387,6 +2402,78 @@ async function starts() {
                                                 console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
                                         }
                                         break
+                                        case 'wasted':
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        var imgbb = require('imgbb-uploader')
+                                         if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+                                         ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+                                         reply(mess.wait)
+                                         owgi = await  client.downloadAndSaveMediaMessage(ger)
+                                         anu = await imgbb("727e7e43f6cda1dfb85d888522fd4ce1", owgi)
+                                        teks = `${anu.display_url}`
+                                        ranp = getRandom('.jpg')
+                                        rano = getRandom('.jpg')
+                                        anu1 = `https://some-random-api.ml/canvas/wasted?avatar=${teks}`
+                                         exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+                                                fs.unlinkSync(ranp)
+                                                if (err) return reply(mess.error.stick)
+                                                nobg = fs.readFileSync(rano)
+                                                 client.sendMessage(from, nobg, sticker, {quoted: mek})
+                                                fs.unlinkSync(rano)
+                                        })
+                                    
+                                             } else {
+                                                 reply('Gunakan foto!')
+                                          }
+                                             break
+                      case 'gay':
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        var imgbb = require('imgbb-uploader')
+                                         if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+                                         ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+                                         reply(mess.wait)
+                                         owgi = await  client.downloadAndSaveMediaMessage(ger)
+                                         anu = await imgbb("727e7e43f6cda1dfb85d888522fd4ce1", owgi)
+                                        teks = `${anu.display_url}`
+                                        ranp = getRandom('.png')
+                                        rano = getRandom('.webp')
+                                        anu1 = `https://some-random-api.ml/canvas/gay?avatar=${teks}`
+                                         exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+                                                fs.unlinkSync(ranp)
+                                                if (err) return reply(mess.error.stick)
+                                                nobg = fs.readFileSync(rano)
+                                                 client.sendMessage(from, nobg, sticker, {quoted: mek})
+                                                fs.unlinkSync(rano)
+                                        })
+                                    
+                                             } else {
+                                                 reply('Gunakan foto!')
+                                          }
+                                             break
+                      case 'trigger':
+                                        if (!isRegister) return reply(mess.only.daftarB)
+                                        var imgbb = require('imgbb-uploader')
+                                         if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+                                         ger = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+                                         reply(mess.wait)
+                                         owgi = await  client.downloadAndSaveMediaMessage(ger)
+                                         anu = await imgbb("727e7e43f6cda1dfb85d888522fd4ce1", owgi)
+                                        teks = `${anu.display_url}`
+                                        ranp = getRandom('.gif')
+                                        rano = getRandom('.webp')
+                                        anu1 = `https://some-random-api.ml/canvas/triggered?avatar=${teks}`
+                                         exec(`wget ${anu1} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+                                                fs.unlinkSync(ranp)
+                                                if (err) return reply(mess.error.stick)
+                                                nobg = fs.readFileSync(rano)
+                                                 client.sendMessage(from, nobg, sticker, {quoted: mek})
+                                                fs.unlinkSync(rano)
+                                        })
+                                    
+                                             } else {
+                                                 reply('Gunakan foto!')
+                                          }
+                                             break
                                 case 'mining':
                                         if (!isRegister) return reply(mess.only.daftarB)
                                         if (isLimit(sender)) return reply(ind.limitend(pushname))
@@ -2403,7 +2490,7 @@ async function starts() {
                                         }
                                         await limitAdd(sender)
                                         break
-                                 /*case 'setname':
+                                 case 'setname':
                                         if (!isGroup) return reply(ind.groupo())
 			                if (!isGroupAdmins) return reply(ind.admin())
 			                if (!isBotGroupAdmins) return reply(ind.badmin())
@@ -2416,14 +2503,14 @@ async function starts() {
 			         	if (!isBotGroupAdmins) return reply(ind.badmin())
                                         client.groupUpdateDescription(from, `${body.slice(9)}`)
                                         client.sendMessage(from, 'Succes, Ganti Deskripsi Grup', text, {quoted: mek})
-					break*/
+					break
                                 case 'translate':
                                         aruga = body.slice(10)
                                         lang = aruga.split("|")[0];
                                         teksnya = aruga.split("|")[1];
                                         if (!isRegister) return reply(mess.only.daftarB)
-                                        if (args.length < 1) return reply(`kode bahasanya mana kak?\nContoh: ${prefix}translate en|Hai, aku 𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃`)
-                                        if (args.length < 2) return reply(`teksnya mana kak?\nContoh: ${prefix}translate en|Hai, aku 𝙼𝚎𝚐𝚞𝚖𝚒𝚗 𝙱𝙾𝚃`)
+                                        if (args.length < 1) return reply(`kode bahasanya mana kak?\nContoh: ${prefix}translate en|Hai, aku Denz`)
+                                        if (args.length < 2) return reply(`teksnya mana kak?\nContoh: ${prefix}translate en|Hai, aku Denz`)
                                         anu = await fetchJson(`https://arugaz.my.id/api/edu/translate?lang=${lang}&text=${teksnya}`, {method: 'get'})
                                         arteks = `◪ *TRANSLATE* \n  │\n  ├─ ❏ Text : ${teksnya} \n  ├─ ❏ Translate : ${anu.text} \n  └─ ❏ *Pronunciation* : ${anu.pronunciation}`
                                         client.sendMessage(from, arteks, text)
